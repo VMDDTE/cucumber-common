@@ -1,4 +1,4 @@
-import checkIfElementExists from '../lib/checkIfElementExists'
+import checkIfElementExists from './checkIfElementExists'
 
 /**
  * Check if the given element exists
