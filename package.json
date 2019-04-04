@@ -2,6 +2,7 @@
   "name": "cucumber-common",
   "version": "0.0.1",
   "description": "Common cucumber functions and steps",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
