@@ -5,8 +5,21 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
+  "eslintConfig": {
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "standardx",
+    "lint-fix": "standardx --fix"
+  },
   "dependencies": {
     "chai": "~4.1.2",
+    "standardx": "^3.0.1",
     "wdio-cucumber-framework": "~2.2.0",
     "wdio-phantomjs-service": "~0.2.2",
     "wdio-selenium-standalone-service": "~0.0.9",
