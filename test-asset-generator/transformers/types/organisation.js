@@ -4,7 +4,7 @@ export default class Organisation {
     }
 
     transform() {
-        return {
+        const data = {
             type: 'ManufacturerRecord',
             data: {
                 Name: this.data.name,
@@ -18,5 +18,7 @@ export default class Organisation {
                 OrganisationReference: this.data.companyNumber
             }
         };
+
+        return data;
     }
 }
