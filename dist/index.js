@@ -8,13 +8,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 require("@babel/register");
 
-var personaEngine = require('./src/test-asset-generator/engines/persona-engine');
+var personaEngine = require('./test-asset-generator/engines/persona-engine');
 
-var common = require('./src/lib/common');
+var common = require('./lib/common');
 
-var override = require('./src/lib/vmd');
+var override = require('./lib/vmd');
 
-var string = require('./src/lib/string');
+var string = require('./lib/string');
 
 module.exports = _objectSpread({}, common, {}, override, {
   personaEngine: personaEngine,
