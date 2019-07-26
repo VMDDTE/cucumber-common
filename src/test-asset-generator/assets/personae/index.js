@@ -1,4 +1,7 @@
+import mary from './mary.json'
+import robert from './robert.json'
+
 export default [
-    require('./mary.json'),
-    require('./robert.json')
+    mary,
+    robert
 ]
