@@ -1,0 +1,106 @@
+{
+    "actions": [
+        {
+            "action": "create",
+            "type": "ManufacturerRecord",
+            "label": "vp1",
+            "data": {
+                "Name": "Raptors and Reptiles-${namespace}",
+                "Address" : {
+                    "Address": "221B Baker St",
+                    "Address1": "Marylebone",
+                    "Town": "London",
+                    "PostCode": "NW1 6XE",
+                    "Country": "UK"
+                },
+                "OrganisationReference": "0001"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ManufacturerRecord",
+            "label": "vp2",
+            "data": {
+                "Name": "Raptors and Reptiles-${namespace} 2",
+                "Address" : {
+                    "Address": "221B Baker St",
+                    "Address1": "Marylebone",
+                    "Town": "London",
+                    "PostCode": "NW1 6XE",
+                    "Country": "UK"
+                },
+                "OrganisationReference": "0002"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet1",
+            "data": {
+                "Name": "Sherlock Holmes",
+                "Email": "vmd.external.hapi@gmail.com"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet2",
+            "data": {
+                "Name": "John Watson",
+                "Email": "{usergen}"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet3",
+            "data": {
+                "Name": "Molly Hooper",
+                "Email": "{usergen}"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet4",
+            "testUser": "true",
+            "data": {
+                "Name": "Test User",
+                "Email": "{usergen}"
+            }
+        },
+        {
+            "action": "assignRole",
+            "type": "PrimaryAdminRole",
+            "label": "role3",
+            "data": {
+                "orgId": "vp1",
+                "users": [
+                    "vet4"
+                ]
+            }
+        },
+        {
+            "action": "assignRole",
+            "type": "PrimaryAdminRole",
+            "label": "role5",
+            "data": {
+                "orgId": "vp2",
+                "users": [
+                    "vet4"
+                ]
+            }
+        },
+        {
+            "action": "assignRole",
+            "type": "AdminRole",
+            "label": "role4",
+            "data": {
+                "orgId": "vp1",
+                "users": [
+                    "vet1"
+                ]
+            }
+        }
+    ]
+}
