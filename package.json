@@ -29,6 +29,7 @@
     "fs-extra": "^8.1.0",
     "tap": "^14.4.2",
     "wdio-cucumber-framework": "^2.2.8",
+    "wdio-phantomjs-service": "~0.2.2",
     "wdio-selenium-standalone-service": "0.0.12",
     "wdio-spec-reporter": "^0.1.5"
   },
