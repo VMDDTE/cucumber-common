@@ -1,5 +1,5 @@
 import organisations  from '../../assets/organisations'
-const { toKebabCase } = require('../../../lib/string')
+import toKebabCase from '../../../lib/string'
 
 class OrganisationFactory {
     /**
