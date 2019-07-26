@@ -1,5 +1,3 @@
-// Try and convert TAG to TDG files here using assets and engines files
-
 import fs from 'fs-extra'
 import Transformer from './test-asset-generator/transformers/transformer'
 
