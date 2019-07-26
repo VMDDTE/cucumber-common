@@ -1,0 +1,121 @@
+[
+  {
+    "application" : "manage-my-business",
+    "pages" : [
+      {
+        "names" : ["home"],
+        "path" : "/"
+      },
+      {
+        "names" : ["Submissions"],
+        "path": "/submissions"
+      },
+      {
+        "names" : [
+          "Invite a New User to your Practice",
+          "Invite a New User to register under your Practice"
+        ],
+        "path": "/invite-overview"
+      },
+      {
+        "names" : ["Manage Users"],
+        "path": "/manage-users"
+      },
+      {
+        "names" : [
+          "Manage Account",
+          "Account Details"
+        ],
+        "path": "/view"
+      },
+      {
+        "names" : ["User Details"],
+        "path": "/your-details/view"
+      },
+      {
+        "names" : ["Change Account Details"],
+        "path": "/edit"
+      },
+      {
+        "names" : ["Create new account"],
+        "path": "/new",
+        "children" : [
+          { 
+            "names" : [ "Start Now"],
+            "path" : "/1"
+          },
+          { 
+            "names" : ["Please select your business type"],
+            "path" : "/2"
+          },
+          { 
+            "names" : ["Please enter your business contact details"],
+            "path" : "/3"
+          },
+          { 
+            "names" : ["Please enter the Business Details for Business Name page"],
+            "path" : "/4"
+          },
+          { 
+            "names" : ["Primary Administrator Details"],
+            "path" : "/5"
+          },
+          { 
+            "names" : ["Please check all details before submitting"],
+            "path" : "/6"
+          },
+          { 
+            "names" : ["Application Complete"],
+            "path" : "/7"
+          }
+        ]
+      },
+      {
+        "names" : ["Application Type"],
+        "path": "/application-type"
+      }
+    ]
+  },
+  {
+    "__comment" : "for unit tests only, do not modify",
+    "application" : "unit-test-runner",
+    "pages" : [
+      {
+        "names" : ["Longest Dinosaur Name"],
+        "path": "/micropachycephalosaurus"
+      },
+      {
+        "names" : ["Dino babies"],
+        "path": "/dino-babies",
+        "children" : [
+          { 
+            "names" : [ "Junior"],
+            "path" : "/baby-t-rex"
+          },
+          { 
+            "names" : ["The one that thinks John Hammon is her dad"],
+            "path" : "/baby-raptor"
+          },
+          { 
+            "names" : ["The one that kid rides in Jurassic World"],
+            "path" : "/baby-triceratops"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "__comment" : "for e2e tests only, do not modify",
+    "application" : "e2e-test-runner",
+    "pages" : [
+      {
+        "names" : ["Kitchen Sink"],
+        "path": "/kitchen-sink.html"
+      },
+      {
+        "names" : ["Forms"],
+        "path": "/forms.html"
+      }
+    ]
+  } 
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "name" : "header-node",
+    "elements" : ["h1", "h2", "h3", "h4", "h5", "h6"]
+  },
+  {
+    "name" : "text-node",
+    "elements" : ["span", "p"]
+  },
+  {
+    "name" : "link-node",
+    "elements" : ["a"]
+  },
+  {
+    "name": "option-node",
+    "elements" : ["a", "button", "input[@type='button']", "input[@type='submit']", "input[@type='radio']", "input[@type='checkbox']"] 
+  },
+  {
+    "__comment" : "DO NOT MODIFY",
+    "name" : "testing-node",
+    "elements" : ["a", "p", "h1"]
+  }
+]
+

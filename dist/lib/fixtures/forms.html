@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <title>Cucumber Common Fixtures</title>
+</head>
+<body>
+  <div class="container mt-5" id="typography">
+    <h1>Form test page</h1>
+    <form action="#" method="get">
+      <fieldset data-hook="first_fieldset">
+        <legend>I am legend</legend>
+        <div class="input-container">
+          <label for="first_name">First Name</label>
+          <input type="text" name="first_name" id="first_name" data-hook="input_first_name" placeholder="Sarah" required>
+        </div>
+        <div class="input-container">
+          <label for="last_name">Last Name</label>
+          <input type="text" name="last_name" id="last_name" data-hook="input_last_name" placeholder="Harding">
+        </div>
+        <div class="input-container">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" data-hook="input_email">
+        </div>
+        <div class="input-container">
+          <label for="fave_dino">Favourite dinosaur</label>
+          <input type="text" name="fave_dino" id="fave_dino" data-hook="input_fave_dino" placeholder="velicoraptor, obviously, no need to change this" disabled>
+        </div>
+        <div class="input-container">
+          <label for="select_option">Select an option</label>
+          <select id="select_option" name="select_option">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+         <div class="input-container">
+          <label for="example-optgroup">Best Jurassic Park trilogy characters</label>
+          <select id="example-optgroup" data-hook="example_optgroup" size="25" multiple>
+            <optgroup label="JP1">
+              <option>Alan Grant</option>
+              <option>Ellie Sadler</option>
+              <option>John Hammond</option>
+              <option>Ian Malcolm</option>
+              <option disabled>Tim Murphy</option>
+              <option disabled>Lex Murphy</option>
+            </optgroup>
+            <optgroup label="JP2">
+              <option>The Baby T-rex</option>
+              <option disabled>Ian Malcolm</option>
+              <option disabled>John Hammond</option>
+              <option disabled>Sarah Harding</option>
+              <option disabled>Nick Van Owen</option>
+              <option disabled>Eddie Carr</option>
+              <option disabled>Kelly Curtis</option>
+              <option disabled>Roland Tembo</option>
+              <option disabled>Peter Ludlow</option>
+              <option disabled>Tim Murphy</option>
+              <option disabled>Lex Murphy</option>
+            </optgroup>
+            <optgroup label="JP3" disabled>
+              <option>Alan Grant</option>
+              <option>Ellie Sadler</option>
+              <option>Paul Kirby</option>
+              <option>Amanda Kirby</option>
+              <option>Eric Kirby</option>
+              <option>Billy Brennan</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="input-container">
+          <label for="example-optgroup2">Best film of all of the Jurassic Park/World series</label>
+          <select id="example-optgroup2" data-hook="example_optgroup-2" size="7">
+            <optgroup label="Park">
+              <option>Jurassic Park</option>
+              <option>The Lost World: Jurassic Park</option>
+              <option disabled>Jurassic Park III</option>
+            </optgroup>
+            <optgroup label="World">
+              <option>Jurassic World</option>
+              <option disabled>Jurassic World: Fallen Kingdom</option>
+            </optgroup>
+          </select>
+        </div>
+      </fieldset>  
+      <fieldset data-hook="second_fieldset">
+        <legend>I'm Spartacus</legend>
+        <div class="input-container">
+          <label for="example-textarea">Textarea</label>
+          <textarea id="example-textarea" rows="3"></textarea>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="option-radio" id="option-radio1" data-hook="radio_option_1" value="option1" checked>
+          <label for="option-radio1">Option one</label> 
+          <input type="radio" name="option-radio" id="option-radio2" data-hook="radio_option_2" value="option2">
+          <label>Option two</label>
+          <input type="radio" name="option-radio" id="option-radio3" data-hook="radio_option_3" value="option3" disabled>
+          <label>Option three is disabled</label>
+        </div>
+        <div class="input-container">
+            <input type="checkbox" id="checkbox1" data-hook="checkbox_option_1">
+            <label for="checkbox1">Option 1</label>
+            <input type="checkbox" id="checkbox2" data-hook="checkbox_option_2">
+            <label for="checkbox2">Option 2</label>
+          </div>
+      </fieldset>
+      <fieldset data-hook="third_fieldset">
+        <legend>I Spartacus, too!</legend>
+        <button type="submit" data-hook="submit_button">Submit form</button>
+        <input type="button" data-hook="input_button" value="Input type button" />
+        <button disabled>Disabled button</button>
+      </fieldset>
+    </form>
+  </div>
+</body>
+</html>
