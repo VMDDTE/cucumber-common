@@ -1,30 +1,44 @@
 {
   "name": "cucumber-common",
-  "version": "0.0.1",
-  "description": "Common cucumber functions and steps",
+  "version": "0.1.0",
+  "description": "Commonly used functions for our testing library, extends upon 'cucumber-boilerplate'",
   "main": "index.js",
-  "author": "",
-  "license": "ISC",
-  "eslintConfig": {
-    "rules": {
-      "indent": [
-        "error",
-        4
-      ]
-    }
-  },
   "scripts": {
-    "lint": "standardx",
-    "lint-fix": "standardx --fix"
+    "start": "node index.js",
+    "start-test-server": "http-server ./lib/fixtures",
+    "test": "run-p test:**",
+    "test:non-browser": "tap --esm --no-cov test/unit/**/*.js",
+    "test:wdio": "wdio --spec test/wdio/*.js test/mocha.wdio.conf.js",
+    "test:e2e": "wdio test/wdio.conf.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VMDDTE/applications.git"
+  },
+  "author": "VMDDTE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VMDDTE/applications/issues"
+  },
+  "homepage": "https://github.com/VMDDTE/applications#readme",
   "dependencies": {
-    "chai": "~4.1.2",
-    "cucumber": "git+https://github.com/VMDDTE/cucumber.git",
-    "standardx": "^3.0.1",
-    "wdio-cucumber-framework": "~2.2.0",
-    "wdio-phantomjs-service": "~0.2.2",
-    "wdio-selenium-standalone-service": "~0.0.9",
-    "webdriverio": "4.13.2"
+    "cucumber-boilerplate": "git+https://github.com/webdriverio/cucumber-boilerplate.git#84c004296864c9878153b969d2e258c336bb3066",
+    "dotenv": "^8.0.0",
+    "tap": "^14.4.2",
+    "wdio-cucumber-framework": "^2.2.8",
+    "wdio-selenium-standalone-service": "0.0.12",
+    "wdio-spec-reporter": "^0.1.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "npm-run-all": "^4.1.5",
+    "standardx": "^4.0.0",
+    "wdio-mocha-framework": "^0.6.4",
+    "webdriverio": "^4.13.2",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
