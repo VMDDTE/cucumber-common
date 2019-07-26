@@ -1,5 +1,6 @@
 import PersonaTransformer from './types/persona';
 import OrganisationTransformer from './types/organisation';
+import MarketingAuthorisationTransformer from './types/marketing-authorisation';
 
 const ASSET_TYPES = {
     PERSONA: 'Person',
@@ -48,7 +49,8 @@ export default class Transformer {
                     const organisationTransformer = new OrganisationTransformer(asset);
                     transformedData = organisationTransformer.transform();
                 case ASSET_TYPES.MARKETING_AUTHORISATION:
-                // Do something.
+                    const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(asset);
+                    transformedData = marketingAuthorisationTransformer.transform();
                 default:
                     console.info(`Asset not found of type ${asset['@type']}`);
             }
