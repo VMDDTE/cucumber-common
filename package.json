@@ -10,7 +10,7 @@
     "test:non-browser": "tap --esm --no-cov test/unit/**/*.js",
     "test:wdio": "wdio --spec test/wdio/*.js test/mocha.wdio.conf.js",
     "test:e2e": "wdio test/wdio.conf.js",
-    "compile": "babel index.js lib --out-dir dist",
+    "compile": "babel index.js src --out-dir dist",
     "prepublish": "npm run compile"
   },
   "repository": {

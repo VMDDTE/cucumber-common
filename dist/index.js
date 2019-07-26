@@ -6,14 +6,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-require("@babel/register"); // const personaEngine = require('./test-asset-generator/engines/persona-engine')
+require("@babel/register");
 
+var personaEngine = require('./src/test-asset-generator/engines/persona-engine');
 
-var common = require('./lib/common');
+var common = require('./src/lib/common');
 
-var override = require('./lib/vmd');
+var override = require('./src/lib/vmd');
 
-var string = require('./lib/string');
+var string = require('./src/lib/string');
 
 module.exports = _objectSpread({}, common, {}, override, {
   personaEngine: personaEngine,
