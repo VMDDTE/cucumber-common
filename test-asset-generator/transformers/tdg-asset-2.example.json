@@ -1,0 +1,40 @@
+{
+    "actions": [
+        {
+            "action": "create",
+            "type": "MarketingAuthorisation",
+            "label": "ma1",
+            "data": {
+                "MarketingAuthorisationNumber": "10347/4036",
+                "OrganisationReference": "10347",
+                "ProductName": "Isocare 1000 mg/g Inhalation Vapour, Liquid",
+                "ProductNo": "A009366",
+                "RenewalDate": "2021-04-28 00:00:00.000"
+            }
+        },
+        {
+            "action": "create",
+            "type": "MarketingAuthorisation",
+            "label": "ma2",
+            "data": {
+                "MarketingAuthorisationNumber": "10347/4037",
+                "OrganisationReference": "10347",
+                "ProductName": "Acecare 2mg/ml Solution for Injection for Dogs and Cats",
+                "ProductNo": "A009392",
+                "RenewalDate": "2021-05-16 01:00:00.000"
+            }
+        },
+        {
+            "action": "create",
+            "type": "MarketingAuthorisation",
+            "label": "ma3",
+            "data": {
+                "MarketingAuthorisationNumber": "10347/4021",
+                "OrganisationReference": "10347",
+                "ProductName": "Benazecare Flavour 5 mg Tablets for Dogs and Cats",
+                "ProductNo": "A006679",
+                "RenewalDate": "2011-08-24 01:00:00.000"
+            }
+        }
+    ]
+}
