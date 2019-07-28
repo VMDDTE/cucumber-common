@@ -1,4 +1,4 @@
-import personae from '../../assets/personae'
+const personae = require('../../assets/personae')
 const timestamp = Math.floor(Date.now() / 1000)
 
 class Actor {
