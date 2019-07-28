@@ -1,7 +1,7 @@
 const action = require('./action')
 const check = require('./check')
 
-module.exports = {
+export default [
     ...action,
     ...check
-}
+]
