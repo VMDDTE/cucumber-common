@@ -1,4 +1,4 @@
-export default {
+{
     "MarketingAuthorisationNumber": "02000/4418",
     "@type": "MarketingAuthorisation",
     "CompanyNumber": "02000",

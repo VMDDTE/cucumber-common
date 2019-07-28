@@ -1,7 +1,4 @@
-import mary from './mary'
-import robert from './robert'
-
-export default [
-    mary,
-    robert
+module.exports = [
+    require('./mary.json'),
+    require('./robert.json')
 ]
