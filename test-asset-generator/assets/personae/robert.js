@@ -1,4 +1,4 @@
-{
+export default {
     "@context": "http://schema.org/",
     "@type": "Person",
     "givenName" : "Robert",
@@ -22,4 +22,4 @@
       }
     ],
     "photo" : "/url/to/photo.jpg"
-  }
+}

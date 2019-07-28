@@ -1,4 +1,4 @@
-{
+export default {
     "MarketingAuthorisationNumber": "10347/4036",
     "@type": "MarketingAuthorisation",
     "CompanyNumber": "10347",
