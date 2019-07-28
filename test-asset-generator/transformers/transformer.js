@@ -1,3 +1,4 @@
+import * as fs from 'fs-extra';
 import PersonaTransformer from './types/persona';
 import OrganisationTransformer from './types/organisation';
 import MarketingAuthorisationTransformer from './types/marketing-authorisation';
@@ -75,6 +76,12 @@ export default class Transformer {
             return [];
         }
 
+        try {
+            this.persistDataToStorage(tdgAssetTransformedData);
+        } catch (e) {
+            console.error(e);
+        }
+
         return tdgAssetTransformedData;
     }
 
@@ -96,5 +103,22 @@ export default class Transformer {
     formatData(data) {
         // Do something.
         return data;
+    }
+
+    /**
+     * Persist a transformed data set to files.
+     * 
+     * @param {object} data 
+     */
+    persistDataToStorage(data) {
+        if (fs.pathExistsSync('test-asset-generator/tmp')) {
+            fs.removeSync('test-asset-generator/tmp');
+        }
+
+        fs.mkdirSync('test-asset-generator/tmp');
+
+        data.forEach((asset, index) => {
+            fs.writeFileSync(`test-asset-generator/tmp/${asset.label}.json`, JSON.stringify(asset))
+        });
     }
 }
