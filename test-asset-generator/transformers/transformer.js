@@ -58,6 +58,7 @@ export default class Transformer {
             transformedData.action = 'create';
             transformedData.label = `${asset['@type']}${index}`;
 
+
             tdgAssetTransformedData.push(transformedData);
         });
 

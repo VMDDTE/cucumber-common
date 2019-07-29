@@ -30,7 +30,7 @@ export default class Runner {
         data.forEach((asset) => {
             fs.writeFileSync(
                 `${this.tmpPath}/${asset.label}.json`,
-                JSON.stringify(asset)
+                `{"actions":[${JSON.stringify(asset)}]}` // Temporary hot fix until TDG is updated to work with single files. 
             );
         });
     }
