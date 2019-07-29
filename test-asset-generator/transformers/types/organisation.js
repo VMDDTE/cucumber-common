@@ -6,7 +6,7 @@ export default class Organisation {
 
     transform() {
         const data = {
-            type: 'ManufacturerRecord',
+            type: 'OrganisationRecord',
             data: {
                 Name: `${this.data.name}-${this.namespace}`,
                 Address: {
