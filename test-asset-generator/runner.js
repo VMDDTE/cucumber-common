@@ -35,7 +35,7 @@ export default class Runner {
         });
     }
 
-    sendToDataGenerator(data) {
+    async sendToDataGenerator(data) {
         data.forEach((asset) => {
             if(!fs.existsSync(`${this.tmpPath}/${asset.label}.json`)){
                 console.info(`Asset does not exist at path ${this.tmpPath}/${asset.label}.json`);
