@@ -42,12 +42,15 @@ export default class Transformer {
                 case ASSET_TYPES.PERSONA:
                     const personaTransformer = new PersonaTransformer(asset, this.namespace);
                     transformedData = personaTransformer.transform();
+                    break;
                 case ASSET_TYPES.ORGANISATION:
                     const organisationTransformer = new OrganisationTransformer(asset, this.namespace);
                     transformedData = organisationTransformer.transform();
+                    break;
                 case ASSET_TYPES.MARKETING_AUTHORISATION:
                     const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(asset, this.namespace);
                     transformedData = marketingAuthorisationTransformer.transform();
+                    break;
                 default:
                     console.info(`Asset not found of type ${asset['@type']}`);
             }
