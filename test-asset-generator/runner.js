@@ -17,15 +17,17 @@ export default class Runner {
      * @param {object} data
      */
     persistDataToStorage(data) {
-        if (fs.pathExistsSync('test-asset-generator/tmp')) {
-            fs.removeSync('test-asset-generator/tmp');
+        const tmpPath = 'test-asset-generator/tmp';
+
+        if (fs.pathExistsSync(tmpPath)) {
+            fs.removeSync(tmpPath);
         }
 
-        fs.mkdirSync('test-asset-generator/tmp');
+        fs.mkdirSync(tmpPath);
 
-        data.forEach((asset, index) => {
+        data.forEach((asset) => {
             fs.writeFileSync(
-                `test-asset-generator/tmp/${asset.label}.json`,
+                `${tmpPath}/${asset.label}.json`,
                 JSON.stringify(asset)
             );
         });

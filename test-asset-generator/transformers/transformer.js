@@ -9,7 +9,6 @@ const ASSET_TYPES = {
 };
 
 export default class Transformer {
-    // This should work but it's not so adding _ is a temp work around.
     constructor(assets, namespace) {
         this.assets = assets;
         this.namespace = namespace;
