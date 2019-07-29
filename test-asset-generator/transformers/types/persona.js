@@ -6,17 +6,10 @@ export default class Persona {
     transform() {
         const data = {
             type: "Person",
+            label: this.data.label,
             data: {
-                givenName : this.data.givenName,
-                familyName: this.data.familyName,
-                additionalName: this.data.additionalName,
-                gender: this.data.gender,
-                email: this.data.email,
-                birthDate: this.data.birthDate,
-                jobTitle: this.data.jobTitle,
-                RCVSNo: this.data.RCVSNo,
-                // Not sure if this should be a map over the array?
-                worksFor: this.data.worksFor
+                name : this.data.givenName + ' ' + this.data.familyName,
+                email: this.data.email
             }
         }
         return data;
