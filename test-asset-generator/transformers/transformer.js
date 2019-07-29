@@ -19,7 +19,8 @@ export default class Transformer {
      * Examples of these can be found in the transformers folder;
      *
      * tag-asset.example.json
-     * tdg-asset.example.json
+     * tdg-asset.example-1.json
+     * tdg-asset.example-2.json
      */
     transform() {
         if (!this.assets.length) {
