@@ -1,13 +1,14 @@
 export default class Organisation {
-    constructor(data) {
+    constructor(data, namespace) {
         this.data = data;
+        this.namespace = namespace;
     }
 
     transform() {
         const data = {
             type: 'ManufacturerRecord',
             data: {
-                Name: this.data.name,
+                Name: `${this.data.name}-${this.namespace}`,
                 Address: {
                     Address: this.data.streetAddress,
                     Address1: this.data.addressLocality,

@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import Transformer from './test-asset-generator/transformers/transformer'
+import Runner from './test-asset-generator/runner'
 
 const assets = []
 
@@ -8,6 +8,5 @@ assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisation
 assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisations/pterodactyl-laboratories/marketing-authorisations/marketing-authorisation.2.json')))
 assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisations/pterodactyl-laboratories/marketing-authorisations/marketing-authorisation.3.json')))
 
-const transformer = new Transformer()
-transformer._constructor(assets)
-console.log(transformer.transform())
+const runner = new Runner(assets, 'XYZ')
+runner.start()
