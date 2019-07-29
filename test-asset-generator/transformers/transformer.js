@@ -1,4 +1,3 @@
-import * as fs from 'fs-extra';
 import PersonaTransformer from './types/persona';
 import OrganisationTransformer from './types/organisation';
 import MarketingAuthorisationTransformer from './types/marketing-authorisation';
@@ -10,13 +9,9 @@ const ASSET_TYPES = {
 };
 
 export default class Transformer {
-    // This should work but it's not so adding _ is a temp work around.
-    constructor(assets) {
+    constructor(assets, namespace) {
         this.assets = assets;
-    }
-
-    _constructor(assets) {
-        this.assets = assets;
+        this.namespace = namespace;
     }
 
     /**
@@ -24,7 +19,8 @@ export default class Transformer {
      * Examples of these can be found in the transformers folder;
      *
      * tag-asset.example.json
-     * tdg-asset.example.json
+     * tdg-asset.example-1.json
+     * tdg-asset.example-2.json
      */
     transform() {
         if (!this.assets.length) {
@@ -44,14 +40,17 @@ export default class Transformer {
 
             switch (asset['@type']) {
                 case ASSET_TYPES.PERSONA:
-                    const personaTransformer = new PersonaTransformer(asset);
+                    const personaTransformer = new PersonaTransformer(asset, this.namespace);
                     transformedData = personaTransformer.transform();
+                    break;
                 case ASSET_TYPES.ORGANISATION:
-                    const organisationTransformer = new OrganisationTransformer(asset);
+                    const organisationTransformer = new OrganisationTransformer(asset, this.namespace);
                     transformedData = organisationTransformer.transform();
+                    break;
                 case ASSET_TYPES.MARKETING_AUTHORISATION:
-                    const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(asset);
+                    const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(asset, this.namespace);
                     transformedData = marketingAuthorisationTransformer.transform();
+                    break;
                 default:
                     console.info(`Asset not found of type ${asset['@type']}`);
             }
@@ -76,12 +75,6 @@ export default class Transformer {
             return [];
         }
 
-        try {
-            this.persistDataToStorage(tdgAssetTransformedData);
-        } catch (e) {
-            console.error(e);
-        }
-
         return tdgAssetTransformedData;
     }
 
@@ -103,22 +96,5 @@ export default class Transformer {
     formatData(data) {
         // Do something.
         return data;
-    }
-
-    /**
-     * Persist a transformed data set to files.
-     * 
-     * @param {object} data 
-     */
-    persistDataToStorage(data) {
-        if (fs.pathExistsSync('test-asset-generator/tmp')) {
-            fs.removeSync('test-asset-generator/tmp');
-        }
-
-        fs.mkdirSync('test-asset-generator/tmp');
-
-        data.forEach((asset, index) => {
-            fs.writeFileSync(`test-asset-generator/tmp/${asset.label}.json`, JSON.stringify(asset))
-        });
     }
 }
