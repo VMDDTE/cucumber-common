@@ -1,6 +1,6 @@
 const tap = require('tap')
 const generator = require('data-generator')
-const Scenario = require('../../lib/tdg/scenario')
+const Context = require('../../lib/tdg/context')
 
 tap.beforeEach((done, t) => {
     generator.clearAll()
@@ -8,18 +8,18 @@ tap.beforeEach((done, t) => {
 })
 
 /**
- * Load the 'Robert' scenario:
+ * Load the 'Robert' context:
  */
 tap.test('robert', async t => {
-    const scenario = new Scenario('robert')
+    const context = new Context('robert')
 
-    await scenario.load()
+    await context.load()
 
-    const testuser = scenario.testUser
+    const testuser = context.testUser
 
     t.ok(testuser)
     t.ok(testuser.Email)
     t.match(testuser.Email, /^robert.price@rnr.com$/)
 
-    await scenario.destroy()
+    await context.destroy()
 })
