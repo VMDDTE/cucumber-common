@@ -1,0 +1,24 @@
+{
+    "actions": [
+        {
+            "action": "create",
+            "type": "ManufacturerRecord",
+            "label": "vp1",
+            "data": {
+                "Name": "Venture Pharmaceuticals Limited-${namespace}"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet1",
+            "testUser": "true",
+            "data": {
+                "FirstName": "Test",
+                "LastName": "User",
+                "Email": "em@il.me",
+                "orgId": "vp1"
+            }
+        }
+    ]
+}
