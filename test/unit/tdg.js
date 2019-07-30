@@ -2,6 +2,8 @@ const tap = require('tap')
 const generator = require('data-generator')
 
 const main = async () => {
+    const dataKey = 'rnr'
+
     /**
      * Clear the test data:
      */
@@ -10,13 +12,13 @@ const main = async () => {
     /**
      * Load the R&R file:
      */
-    await generator.generate('rnr')
+    await generator.generate(dataKey)
 
     /**
      * Check that there is a user, and that the email address
      * has the correct format:
      */
-    const testuser = await generator.getTestUser('rnr')
+    const testuser = await generator.getTestUser(dataKey)
 
     tap.ok(testuser)
     tap.ok(testuser.Email)
@@ -25,7 +27,7 @@ const main = async () => {
     /**
      * Tear down properly:
      */
-    await generator.tearDown('rnr')
+    await generator.tearDown(dataKey)
 }
 
 main()
