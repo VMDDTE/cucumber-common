@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default class MarketingAuthorisation {
     constructor(data, namespace) {
         this.data = data;
@@ -5,6 +7,8 @@ export default class MarketingAuthorisation {
     }
 
     transform() {
+        const convertedRenewalDate = moment(this.data.RenewalDate, 'DD/MM/YYYY')
+
         const data = {
             type: 'MarketingAuthorisation',
             data: {
@@ -12,7 +16,7 @@ export default class MarketingAuthorisation {
                 OrganisationReference: this.data.CompanyNumber,
                 ProductName: this.data.ProductName,
                 ProductNo: this.data.ProductNo,
-                RenewalDate: this.data.RenewalDate
+                RenewalDate: convertedRenewalDate.toISOString()
             }
         };
 

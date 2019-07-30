@@ -1,3 +1,5 @@
+import ORGANISATION_TYPES from 'data-generator/common/constants';
+
 export default class Organisation {
     constructor(data, namespace) {
         this.data = data;
@@ -6,7 +8,7 @@ export default class Organisation {
 
     transform() {
         const data = {
-            type: 'ManufacturerRecord',
+            type: this.mapOrganisationTypeToTDGFormat(this.data.organisationType),
             data: {
                 Name: `${this.data.name}-${this.namespace}`,
                 Address: {
@@ -21,5 +23,14 @@ export default class Organisation {
         };
 
         return data;
+    }
+
+    mapOrganisationTypeToTDGFormat(organisationType) {
+        switch (organisationType) {
+            case 'Marketing Authorisation Holder':
+                return ORGANISATION_TYPES.TYPE_ORGANISATION;
+            default:
+                console.info(`Organisation type ${organisationType} not found`);
+        }
     }
 }

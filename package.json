@@ -24,14 +24,16 @@
   "homepage": "https://github.com/VMDDTE/applications#readme",
   "dependencies": {
     "cucumber-boilerplate": "git+https://github.com/webdriverio/cucumber-boilerplate.git#84c004296864c9878153b969d2e258c336bb3066",
+    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/new_tdg_changes",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "fs-extra": "^8.1.0",
+    "moment": "^2.24.0",
     "tap": "^14.4.2",
-    "webdriverio": "^4.13.2",
     "wdio-cucumber-framework": "^2.2.8",
     "wdio-selenium-standalone-service": "0.0.9",
-    "wdio-spec-reporter": "^0.1.5"
+    "wdio-spec-reporter": "^0.1.5",
+    "webdriverio": "^4.13.2"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
