@@ -1,0 +1,53 @@
+{
+    "actions": [
+        {
+            "action": "create",
+            "type": "ManufacturerRecord",
+            "label": "vp1",
+            "data": {
+                "Name": "Raptors and Reptiles-${namespace}"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ManufacturerRecord",
+            "label": "vp2",
+            "data": {
+                "Name": "Pterodactyl Laboratories-${namespace}"
+            }
+        },
+        {
+            "action": "create",
+            "type": "ExternalUserRecord",
+            "label": "vet1",
+            "testUser": "true",
+            "data": {
+                "FirstName": "Robert",
+                "LastName": "Price",
+                "Email": "robert.price@rnr.com"
+            }
+        },
+        {
+            "action": "assignRole",
+            "type": "PrimaryAdminRole",
+            "label": "role1",
+            "data": {
+                "orgId": "vp1",
+                "users": [
+                    "vet1"
+                ]
+            }
+        },
+        {
+            "action": "assignRole",
+            "type": "AuthorisedUserRole",
+            "label": "role2",
+            "data": {
+                "orgId": "vp2",
+                "users": [
+                    "vet1"
+                ]
+            }
+        }
+    ]
+}
