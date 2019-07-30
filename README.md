@@ -16,7 +16,7 @@ To run these tests, do this:
 npm run test:non-browser
 ```
 
-### wdio Tests
+### wdio Tests (including e2e)
 
 Many of the Cucumber Common functions are written to run in the context of wdio, in synchronous mode. In order to run an environment as close to this as possible some of the tests are written using Mocha, and executed with wdio as the test runner.
 
@@ -40,7 +40,8 @@ or like this:
 npm run test:wdio
 ```
 
+If you are running the e2e tests individually, ensure you have started the test server first by running `npm run test:start-server`
 
 ## Persona Engine
 
-[Go here](./persona-engine/README.md) for the persona engine docs
+[Go here](./test-asset-generator/engines/persona-engine/README.md) for the persona engine docs
