@@ -24,7 +24,7 @@
   "homepage": "https://github.com/VMDDTE/applications#readme",
   "dependencies": {
     "cucumber-boilerplate": "git+https://github.com/webdriverio/cucumber-boilerplate.git#84c004296864c9878153b969d2e258c336bb3066",
-    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/SIS-3720-update_tdg_with_new_code_for_new_tag_system",
+    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/new_tdg_changes",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "fs-extra": "^8.1.0",
