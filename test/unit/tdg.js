@@ -43,6 +43,21 @@ const main = async () => {
     tap.match(testuser.Email, /^em@il.me$/)
 
     await generator.tearDown(dataKey)
+
+    /**
+     * Now test Robert:
+     */
+    dataKey = 'robert'
+
+    generator.clearAll()
+    await generator.generate(dataKey)
+    testuser = await generator.getTestUser(dataKey)
+
+    tap.ok(testuser)
+    tap.ok(testuser.Email)
+    tap.match(testuser.Email, /^robert.price@rnr.com$/)
+
+    await generator.tearDown(dataKey)
 }
 
 main()
