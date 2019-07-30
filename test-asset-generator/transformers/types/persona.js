@@ -5,11 +5,10 @@ export default class Persona {
 
     transform() {
         const data = {
-            type: "Person",
-            label: this.data.label,
+            type: 'ExternalUserRecord',
             data: {
-                name : this.data.givenName + ' ' + this.data.familyName,
-                email: this.data.email
+                name : `${this.data.givenName} ${this.data.familyName}`,
+                email: '{usergen}'
             }
         }
         return data;
