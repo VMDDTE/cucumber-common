@@ -6,8 +6,8 @@
   "scripts": {
     "start-transformer": "node -r esm index-transformer.js",
     "start": "node index.js",
-    "start-test-server": "http-server ./lib/fixtures",
     "test": "run-p test:**",
+    "test:start-server": "http-server -p 8080 ./lib/fixtures",
     "test:non-browser": "tap --esm --no-cov test/unit/**/*.js",
     "test:wdio": "wdio --spec test/wdio/*.js test/mocha.wdio.conf.js",
     "test:e2e": "wdio test/wdio.conf.js"
