@@ -1,13 +1,16 @@
 const tap = require('tap')
 const generator = require('data-generator')
 
+tap.beforeEach((done, t) => {
+    /**
+     * Clear the test data:
+     */
+    generator.clearAll()
+    done()
+})
+
 tap.test('rnr', async t => {
     const dataKey = 'rnr'
-
-    /**
-   * Clear the test data:
-   */
-    generator.clearAll()
 
     /**
    * Load the R&R file:
@@ -36,7 +39,6 @@ tap.test('rnr', async t => {
 tap.test('mary', async t => {
     const dataKey = 'mary'
 
-    generator.clearAll()
     await generator.generate(dataKey)
     const testuser = await generator.getTestUser(dataKey)
 
@@ -53,7 +55,6 @@ tap.test('mary', async t => {
 tap.test('robert', async t => {
     const dataKey = 'robert'
 
-    generator.clearAll()
     await generator.generate(dataKey)
     const testuser = await generator.getTestUser(dataKey)
 
