@@ -2,6 +2,7 @@
     "@context": "http://schema.org/",
     "@type": "Organization",
     "name": "Pterodactyl laboratories",
+    "organisationType": "Marketing Authorisation Holder",
     "address" : {
         "@type": "PostalAddress",
         "streetAddress": "",

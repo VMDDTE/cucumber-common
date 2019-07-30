@@ -8,10 +8,11 @@ class OrganisationFactory {
      * 
      * @param {json} organisation asset organisation schema
      */
-    constructor({ companyNumber, email, name }) {
+    constructor({ companyNumber, email, name, organisationType }) {
         this.Name = name
         this.Email = email
         this.OrganisationReference = companyNumber
+        this.OrganisationType = organisationType
         this.MarketingAuthorisations = getMarketingAuthorisationsByOrganisation(name)
     }
 }

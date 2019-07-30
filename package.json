@@ -4,7 +4,7 @@
   "description": "Commonly used functions for our testing library, extends upon 'cucumber-boilerplate'",
   "main": "index.js",
   "scripts": {
-    "start-transformer": "export NODE_ENV=local; export B2C_USERNAME=vmd.vet.test@gmail.com; export B2C_PASSWORD=Pw4supp0rt; node -r esm index-transformer.js",
+    "start-transformer": "export NODE_ENV=local; export B2C_USERNAME=vmd.vet.test@gmail.com; export B2C_PASSWORD=Pw4supp0rt;node -r esm index-transformer.js",
     "start": "node index.js",
     "start-test-server": "http-server ./lib/fixtures",
     "test": "run-p test:**",
@@ -24,15 +24,16 @@
   "homepage": "https://github.com/VMDDTE/applications#readme",
   "dependencies": {
     "cucumber-boilerplate": "git+https://github.com/webdriverio/cucumber-boilerplate.git#84c004296864c9878153b969d2e258c336bb3066",
-    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#develop",
+    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/SIS-3720-update_tdg_with_new_code_for_new_tag_system",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "fs-extra": "^8.1.0",
+    "moment": "^2.24.0",
     "tap": "^14.4.2",
-    "webdriverio": "^4.13.2",
     "wdio-cucumber-framework": "^2.2.8",
     "wdio-selenium-standalone-service": "0.0.9",
-    "wdio-spec-reporter": "^0.1.5"
+    "wdio-spec-reporter": "^0.1.5",
+    "webdriverio": "^4.13.2"
   },
   "devDependencies": {
     "http-server": "^0.11.1",

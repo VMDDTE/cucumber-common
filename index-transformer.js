@@ -9,5 +9,4 @@ assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisation
 // assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisations/pterodactyl-laboratories/marketing-authorisations/marketing-authorisation.3.json')))
 
 const runner = new Runner(assets, 'XYZ')
-runner.start()
-process.exit()
+runner.start();

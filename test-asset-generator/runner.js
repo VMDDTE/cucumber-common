@@ -35,14 +35,14 @@ export default class Runner {
         });
     }
 
-    async sendToDataGenerator(data) {
+    sendToDataGenerator(data) {
         data.forEach((asset) => {
             if(!fs.existsSync(`${this.tmpPath}/${asset.label}.json`)){
                 console.info(`Asset does not exist at path ${this.tmpPath}/${asset.label}.json`);
                 return;
             }
 
-            DataGenerator.generate2(`${this.tmpPath}/${asset.label}.json`, this.namespace)
+            DataGenerator.generatev2(`${this.tmpPath}/${asset.label}.json`, this.namespace)
         })
     }
 }
