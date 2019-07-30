@@ -4,7 +4,7 @@
   "description": "Commonly used functions for our testing library, extends upon 'cucumber-boilerplate'",
   "main": "index.js",
   "scripts": {
-    "start-transformer": "export NODE_ENV=local; export B2C_USERNAME=vmd.vet.test@gmail.com; export B2C_PASSWORD=Pw4supp0rt;node -r esm index-transformer.js",
+    "start-transformer": "node -r esm index-transformer.js",
     "start": "node index.js",
     "start-test-server": "http-server ./lib/fixtures",
     "test": "run-p test:**",
