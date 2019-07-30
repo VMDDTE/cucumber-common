@@ -2,7 +2,7 @@ const tap = require('tap')
 const generator = require('data-generator')
 
 const main = async () => {
-    const dataKey = 'rnr'
+    let dataKey = 'rnr'
 
     /**
      * Clear the test data:
@@ -18,7 +18,7 @@ const main = async () => {
      * Check that there is a user, and that the email address
      * has the correct format:
      */
-    const testuser = await generator.getTestUser(dataKey)
+    let testuser = await generator.getTestUser(dataKey)
 
     tap.ok(testuser)
     tap.ok(testuser.Email)
@@ -27,6 +27,21 @@ const main = async () => {
     /**
      * Tear down properly:
      */
+    await generator.tearDown(dataKey)
+
+    /**
+     * Now test Mary:
+     */
+    dataKey = 'mary'
+
+    generator.clearAll()
+    await generator.generate(dataKey)
+    testuser = await generator.getTestUser(dataKey)
+
+    tap.ok(testuser)
+    tap.ok(testuser.Email)
+    tap.match(testuser.Email, /^em@il.me$/)
+
     await generator.tearDown(dataKey)
 }
 
