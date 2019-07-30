@@ -2,62 +2,68 @@ const tap = require('tap')
 const generator = require('data-generator')
 
 const main = async () => {
-    let dataKey = 'rnr'
+    tap.test('rnr', async t => {
+        const dataKey = 'rnr'
 
-    /**
-     * Clear the test data:
-     */
-    generator.clearAll()
+        /**
+       * Clear the test data:
+       */
+        generator.clearAll()
 
-    /**
-     * Load the R&R file:
-     */
-    await generator.generate(dataKey)
+        /**
+       * Load the R&R file:
+       */
+        await generator.generate(dataKey)
 
-    /**
-     * Check that there is a user, and that the email address
-     * has the correct format:
-     */
-    let testuser = await generator.getTestUser(dataKey)
+        /**
+       * Check that there is a user, and that the email address
+       * has the correct format:
+       */
+        const testuser = await generator.getTestUser(dataKey)
 
-    tap.ok(testuser)
-    tap.ok(testuser.Email)
-    tap.match(testuser.Email, /\d{10}.vmd.vet.test@gmail.com$/)
+        t.ok(testuser)
+        t.ok(testuser.Email)
+        t.match(testuser.Email, /\d{10}.vmd.vet.test@gmail.com$/)
 
-    /**
-     * Tear down properly:
-     */
-    await generator.tearDown(dataKey)
+        /**
+       * Tear down properly:
+       */
+        await generator.tearDown(dataKey)
+    })
 
     /**
      * Now test Mary:
      */
-    dataKey = 'mary'
+    tap.test('mary', async t => {
+        const dataKey = 'mary'
 
-    generator.clearAll()
-    await generator.generate(dataKey)
-    testuser = await generator.getTestUser(dataKey)
+        generator.clearAll()
+        await generator.generate(dataKey)
+        const testuser = await generator.getTestUser(dataKey)
 
-    tap.ok(testuser)
-    tap.ok(testuser.Email)
-    tap.match(testuser.Email, /^em@il.me$/)
+        t.ok(testuser)
+        t.ok(testuser.Email)
+        t.match(testuser.Email, /^em@il.me$/)
 
-    await generator.tearDown(dataKey)
+        await generator.tearDown(dataKey)
+    })
 
     /**
      * Now test Robert:
      */
-    dataKey = 'robert'
+    tap.test('robert', async t => {
+        const dataKey = 'robert'
 
-    generator.clearAll()
-    await generator.generate(dataKey)
-    testuser = await generator.getTestUser(dataKey)
+        generator.clearAll()
+        await generator.generate(dataKey)
+        const testuser = await generator.getTestUser(dataKey)
 
-    tap.ok(testuser)
-    tap.ok(testuser.Email)
-    tap.match(testuser.Email, /^robert.price@rnr.com$/)
+        t.ok(testuser)
+        t.ok(testuser.Email)
+        t.match(testuser.Email, /^robert.price@rnr.com$/)
 
-    await generator.tearDown(dataKey)
+        await generator.tearDown(dataKey)
+    })
 }
 
 main()
