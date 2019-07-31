@@ -9,5 +9,5 @@ assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisation
 assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisations/pterodactyl-laboratories/marketing-authorisations/marketing-authorisation.2.json')))
 assets.push(JSON.parse(fs.readFileSync('test-asset-generator/assets/organisations/pterodactyl-laboratories/marketing-authorisations/marketing-authorisation.3.json')))
 
-const runner = new Runner(assets, 'XYZ')
+const runner = new Runner(assets, 'featureA', 'XYZ')
 runner.start();

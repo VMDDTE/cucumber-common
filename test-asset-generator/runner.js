@@ -3,15 +3,15 @@ import Transformer from './transformers/transformer';
 import * as DataGenerator from 'data-generator';
 
 export default class Runner {
-    constructor(assets, namespace) {
+    constructor(assets, featureName, namespace) {
         this.tmpPath = 'test-asset-generator/tmp';
         this.namespace = namespace;
+        this.featureName = featureName;
         this.transformer = new Transformer(assets, namespace);
     }
 
     start() {
         const tdgAssets = this.transformer.transform()
-        // console.log(tdgAssets)
         this.persistDataToStorage(tdgAssets);
         this.sendToDataGenerator(tdgAssets);
     }
@@ -31,19 +31,19 @@ export default class Runner {
         data.forEach((asset) => {
             fs.writeFileSync(
                 `${this.tmpPath}/${asset.label}.json`,
-                `{"actions":[${JSON.stringify(asset)}]}` // Temporary hot fix until TDG is updated to work with single files. 
+                `{"actions":[${JSON.stringify(asset)}]}` 
             );
         });
     }
 
-    sendToDataGenerator(data) {
-        data.forEach((asset) => {
+    async sendToDataGenerator(data) {
+        for (const asset of data) {
             if(!fs.existsSync(`${this.tmpPath}/${asset.label}.json`)){
                 console.info(`Asset does not exist at path ${this.tmpPath}/${asset.label}.json`);
                 return;
             }
 
-            DataGenerator.generateFromAbsPath(`${this.tmpPath}/${asset.label}.json`, this.namespace)
-        })
+            await DataGenerator.generateFromAbsPath(`${this.tmpPath}/${asset.label}.json`, this.featureName, this.namespace)
+        }
     }
 }
