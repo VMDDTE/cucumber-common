@@ -10,7 +10,7 @@
     "test:start-server": "http-server -p 8080 ./lib/fixtures",
     "test:non-browser": "tap --esm --no-cov test/unit/**/*.js",
     "test:wdio": "wdio --spec test/wdio/*.js test/mocha.wdio.conf.js",
-    "test:e2e": "wdio test/wdio.conf.js"
+    "test:e2e": "NODE_ENV=local wdio test/wdio.conf.js"
   },
   "repository": {
     "type": "git",
