@@ -6,5 +6,7 @@ Feature: Check that a context can be loaded
     Background:
         Given the 'robert' context
 
-    Scenario:
+    Scenario: "testing context"
         Then testUser has email of 'robert.price@rnr.com'
+
+          
