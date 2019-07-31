@@ -17,7 +17,8 @@ export default class MarketingAuthorisation {
                 ProductName: this.data.ProductName,
                 ProductNo: this.data.ProductNo,
                 RenewalDate: convertedRenewalDate.toISOString()
-            }
+            },
+            originalData: this.data
         };
 
         return data;

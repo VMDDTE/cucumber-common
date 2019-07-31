@@ -10,7 +10,8 @@ export default class Runner {
     }
 
     start() {
-        const tdgAssets = this.transformer.transform();
+        const tdgAssets = this.transformer.transform()
+        // console.log(tdgAssets)
         this.persistDataToStorage(tdgAssets);
         this.sendToDataGenerator(tdgAssets);
     }
@@ -42,7 +43,7 @@ export default class Runner {
                 return;
             }
 
-            DataGenerator.generatev2(`${this.tmpPath}/${asset.label}.json`, this.namespace)
+            DataGenerator.generateFromAbsPath(`${this.tmpPath}/${asset.label}.json`, this.namespace)
         })
     }
 }

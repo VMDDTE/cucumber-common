@@ -1,7 +1,7 @@
 {
     "@context": "http://schema.org/",
     "@type": "Organization",
-    "name": "Pterodactyl laboratories",
+    "name": "Pterodactyl Laboratories",
     "organisationType": "Marketing Authorisation Holder",
     "address" : {
         "@type": "PostalAddress",

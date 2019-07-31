@@ -1,4 +1,4 @@
-import ORGANISATION_TYPES from 'data-generator/common/constants';
+import TDG_CONSTANTS from 'data-generator/common/constants';
 
 export default class Organisation {
     constructor(data, namespace) {
@@ -19,7 +19,8 @@ export default class Organisation {
                     Country: this.data.addressCountry
                 },
                 OrganisationReference: this.data.companyNumber
-            }
+            },
+            originalData: this.data
         };
 
         return data;
@@ -28,7 +29,7 @@ export default class Organisation {
     mapOrganisationTypeToTDGFormat(organisationType) {
         switch (organisationType) {
             case 'Marketing Authorisation Holder':
-                return ORGANISATION_TYPES.TYPE_ORGANISATION;
+                return TDG_CONSTANTS.TYPE_ORGANISATION;
             default:
                 console.info(`Organisation type ${organisationType} not found`);
         }

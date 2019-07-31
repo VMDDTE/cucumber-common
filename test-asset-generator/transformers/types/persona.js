@@ -1,6 +1,7 @@
 export default class Persona {
-    constructor(data) {
+    constructor(data, namespace) {
         this.data = data;
+        this.namespace = namespace;
     }
 
     transform() {
@@ -9,7 +10,8 @@ export default class Persona {
             data: {
                 name : `${this.data.givenName} ${this.data.familyName}`,
                 email: '{usergen}'
-            }
+            },
+            originalData: this.data
         }
         return data;
     }
