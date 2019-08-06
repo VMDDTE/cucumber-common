@@ -1,5 +1,6 @@
 import PersonaTransformer from './types/persona';
 import PersonaFactory from '../engines/persona-engine'
+import OrganisationFactory from '../engines/organisation-engine'
 import OrganisationTransformer from './types/organisation';
 import RoleTransformer from './types/role';
 import MarketingAuthorisationTransformer from './types/marketing-authorisation';
@@ -41,7 +42,7 @@ class Transformer {
         }
     }
     
-    createRoles(role) {
+    createRole(role) {
         try {
             const roleTransformer = new RoleTransformer(role, this.namespace)
             return roleTransformer.transform()
@@ -61,9 +62,22 @@ class Transformer {
 
     transform2() {
         this.catchEmptyError(this.persona)
-        // create test user from persona
-        // create organisations from persona.roles
-        // create roles from roles
+        const testUser = this.createTestUser()
+        const orgArray = []
+        const roleArray = []
+        const maArray = []
+
+        testUser.Roles.forEach(({ name, role }) => {
+            const organisation = OrganisationFactory(name)
+            orgArray.push(this.createOrganisation(organisation));
+            roleArray.push(this.createRole(role))
+            organisation.MarketingAuthorisations.forEach(ma => {
+                maArray.push(this.createMa(ma))
+            })
+        })
+
+        return [testUser, ...orgArray, ...roleArray, ...maArray]
+
     }
 
     /**
@@ -183,9 +197,9 @@ class Transformer {
  * Transformer class meaning the end users don't need to instantiate a class instance
  * each time.
  *
- * @param {String} assets: the type of data transform, can be one of persona, organisation or marketing authority 
- * @param {String} namespace: 
+ * @param {String} personaName: The name of the persona to load
+ * @param {String} namespace: The namespace the transformer will run in
  */
- const transformer = (assets, namespace) => new Transformer(assets, namespace)
+const transformer = (personaName, namespace) => new Transformer(assets, namespace)
 
  module.exports = transformer
