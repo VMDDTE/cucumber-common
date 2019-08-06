@@ -1,4 +1,5 @@
 import PersonaTransformer from './types/persona';
+import PersonaFactory from '../engines/persona-engine'
 import OrganisationTransformer from './types/organisation';
 import RoleTransformer from './types/role';
 import MarketingAuthorisationTransformer from './types/marketing-authorisation';
@@ -10,10 +11,59 @@ const ASSET_TYPES = {
     MARKETING_AUTHORISATION: 'MarketingAuthorisation'
 };
 
-export default class Transformer {
-    constructor(assets, namespace) {
-        this.assets = assets;
+class Transformer {
+    constructor(personaName, namespace) {
+        this.persona = PersonaFactory(personaName);
         this.namespace = namespace;
+    }
+    
+    catchEmptyError (asset) {
+        throw !asset.length ? new Error('No assets have been provided') : false;
+    }
+
+    createTestUser() {
+        try {
+            const personaTransformer = new PersonaTransformer(this.persona, this.namespace);
+            return personaTransformer.transform();
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+
+    createOrganisation(org) {
+        try {
+            const organisationTransformer = new OrganisationTransformer(org, this.namespace);
+            
+            return organisationTransformer.transform()
+            
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+    
+    createRoles(role) {
+        try {
+            const roleTransformer = new RoleTransformer(role, this.namespace)
+            return roleTransformer.transform()
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+
+    createMa(ma) {
+        try {
+            const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(ma, this.namespace);
+            return marketingAuthorisationTransformer.transform();
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+
+    transform2() {
+        this.catchEmptyError(this.persona)
+        // create test user from persona
+        // create organisations from persona.roles
+        // create roles from roles
     }
 
     /**
@@ -68,8 +118,8 @@ export default class Transformer {
             // Add roles.
             if(asset['@type'] == ASSET_TYPES.PERSONA){
                 if(asset.worksFor){
-                    asset.worksFor.forEach((roles, index) => {
-                        const roleTransformer = new RoleTransformer(roles, this.namespace)
+                    asset.worksFor.forEach((role, index) => {
+                        const roleTransformer = new RoleTransformer(role, this.namespace)
                         const transformedAsset2 = roleTransformer.transform()
                         const transformedTDGAsset2 = this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_ASSIGN_ROLE, transformedAsset2, index)
                         transformedTDGAsset2.data.users = [transformedAsset.label]
@@ -81,10 +131,10 @@ export default class Transformer {
 
         ////////////////////
 
-        roleTDGAssets.forEach((role, index) => {
+        roleTDGAssets.forEach(role => {
             const organisationName = role.originalData.name
 
-            transformedTDGAssets.forEach((asset) => {
+            transformedTDGAssets.forEach(asset => {
                 if(
                     asset.type == TDG_CONSTANTS.TYPE_ORGANISATION &&
                     asset.originalData.name === organisationName
@@ -95,7 +145,7 @@ export default class Transformer {
             })
         })
 
-        transformedTDGAssets.forEach((asset) => {
+        transformedTDGAssets.forEach(asset => {
             delete asset.originalData
         })
 
@@ -126,3 +176,16 @@ export default class Transformer {
         })
     }
 }
+
+
+/**
+ * transformer is a small factory function to give us control over the use of the
+ * Transformer class meaning the end users don't need to instantiate a class instance
+ * each time.
+ *
+ * @param {String} assets: the type of data transform, can be one of persona, organisation or marketing authority 
+ * @param {String} namespace: 
+ */
+ const transformer = (assets, namespace) => new Transformer(assets, namespace)
+
+ module.exports = transformer

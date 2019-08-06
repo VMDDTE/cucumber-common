@@ -1,5 +1,5 @@
-import org1 from './pterodactyl-laboratories/organisation.json'
-import org2 from './raptors-and-reptiles/organisation.json'
+const org1 = require('./pterodactyl-laboratories/organisation.json')
+const org2 = require('./raptors-and-reptiles/organisation.json')
 
 export default [
     org1,

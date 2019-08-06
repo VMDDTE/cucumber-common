@@ -8,17 +8,17 @@ export default class Organisation {
 
     transform() {
         const data = {
-            type: this.mapOrganisationTypeToTDGFormat(this.data.organisationType),
+            type: this.mapOrganisationTypeToTDGFormat(this.data.OrganisationType),
             data: {
-                Name: `${this.data.name}-${this.namespace}`,
+                Name: `${this.data.Name}-${this.namespace}`,
                 Address: {
-                    Address: this.data.streetAddress,
-                    Address1: this.data.addressLocality,
-                    Town: this.data.addressRegion,
-                    PostCode: this.data.postalCode,
-                    Country: this.data.addressCountry
+                    Address: '',
+                    Address1: '',
+                    Town: '',
+                    PostCode: '',
+                    Country: ''
                 },
-                OrganisationReference: this.data.companyNumber
+                OrganisationReference: this.data.OrganisationReference
             },
             originalData: this.data
         };

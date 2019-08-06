@@ -8,7 +8,7 @@ export default class Persona {
         const data = {
             type: 'ExternalUserRecord',
             data: {
-                name : `${this.data.givenName} ${this.data.familyName}`,
+                name : this.data.Name,
                 email: '{usergen}'
             },
             originalData: this.data

@@ -21,16 +21,17 @@ class Actor {
     ? {
       FirstName: thePersona.givenName,
       LastName: thePersona.familyName,
+      Name: `${thePersona.givenName} ${thePersona.familyName}`,
       Gender: thePersona.gender,
       BirthDate: thePersona.birthDate,
       JobTitle: thePersona.jobTitle,
       RcvsNo: thePersona.RCVSNo,
       Roles: thePersona.worksFor,
-      Email: `${timestamp}-${thePersona.email}`,
-      Name: `${thePersona.givenName} ${thePersona.familyName}`
+      Email: `${timestamp}-${thePersona.email}`
     }
     : new Error(`'${name}' doesn\'t exist`)
   }
+  
 }
 
 /**
