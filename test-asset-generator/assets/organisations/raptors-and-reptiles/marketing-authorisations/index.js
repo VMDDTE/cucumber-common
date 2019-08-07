@@ -1,6 +1,6 @@
-import marketingAuthorisation1 from './marketing-authorisation.1.json'
-import marketingAuthorisation2 from './marketing-authorisation.2.json'
-import marketingAuthorisation3 from './marketing-authorisation.3.json'
+const marketingAuthorisation1 = require('./marketing-authorisation.1.json')
+const marketingAuthorisation2 = require('./marketing-authorisation.2.json')
+const marketingAuthorisation3 = require('./marketing-authorisation.3.json')
 
 module.exports = [
     marketingAuthorisation1,

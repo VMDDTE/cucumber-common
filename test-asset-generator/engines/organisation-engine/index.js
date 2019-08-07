@@ -1,3 +1,3 @@
-import getOrganisation from './OrganisationFactory'
+const getOrganisation = require('./Organisation')
 
-export default getOrganisation
+module.exports = getOrganisation

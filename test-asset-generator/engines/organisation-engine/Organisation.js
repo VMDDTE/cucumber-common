@@ -1,7 +1,7 @@
-import organisations  from '../../assets/organisations'
+const organisations = require('../../assets/organisations')
 const { toKebabCase } = require('../../../lib/string')
 
-class OrganisationFactory {
+class Organisation {
     /**
      * Creates a stripped back data model from business description
      * found in assets/organisations/org-name-folder/organisation.json
@@ -17,7 +17,7 @@ class OrganisationFactory {
     }
 }
 
-const getInstance = organisationRecord => new OrganisationFactory(organisationRecord)
+const getInstance = organisationRecord => new Organisation(organisationRecord)
  
 const findOrganisationRecord = name => organisations.find(org => org.name === name)
 
@@ -30,4 +30,4 @@ const getMarketingAuthorisationsByOrganisation = name => {
     }
 }
 
-export default (name) => getInstance(findOrganisationRecord(name))
+module.exports = (name) => getInstance(findOrganisationRecord(name))
