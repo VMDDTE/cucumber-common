@@ -24,8 +24,8 @@ class Transformer {
 
     createTestUser() {
         try {
-            const personaTransformer = new PersonaTransformer(this.persona, this.namespace);
-            return personaTransformer.transform();
+            const transformedPersona = (new PersonaTransformer(this.persona, this.namespace)).transform();
+            return this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_CREATE, transformedPersona, index)
         } catch (err) {
             throw new Error(err)
         }
@@ -33,9 +33,8 @@ class Transformer {
 
     createOrganisation(org) {
         try {
-            const organisationTransformer = new OrganisationTransformer(org, this.namespace);
-            
-            return organisationTransformer.transform()
+            const transformedOrganisation = (new OrganisationTransformer(org, this.namespace)).transform();
+            return this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_CREATE, transformedOrganisation, index)
             
         } catch (err) {
             throw new Error(err)
@@ -44,8 +43,8 @@ class Transformer {
     
     createRole(role) {
         try {
-            const roleTransformer = new RoleTransformer(role, this.namespace)
-            return roleTransformer.transform()
+            const transformedRole = (new RoleTransformer(role, this.namespace)).transform()
+            return this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_ASSIGN_ROLE, transformedRole, index)
         } catch (err) {
             throw new Error(err)
         }
@@ -53,24 +52,29 @@ class Transformer {
 
     createMa(ma) {
         try {
-            const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(ma, this.namespace);
-            return marketingAuthorisationTransformer.transform();
+            const transformedMarketingAuthorisation = (new MarketingAuthorisationTransformer(ma, this.namespace).transform());
+            return this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_CREATE, transformedMarketingAuthorisation, index)
         } catch (err) {
             throw new Error(err)
         }
     }
 
-    transform2() {
+    transform() {
         this.catchEmptyError(this.persona)
-        const testUser = this.createTestUser()
+        const userTDG = this.createTestUser()
         const orgArray = []
         const roleArray = []
         const maArray = []
 
-        testUser.Roles.forEach(({ name, role }) => {
-            const organisation = OrganisationFactory(name)
-            orgArray.push(this.createOrganisation(organisation));
-            roleArray.push(this.createRole(role))
+        testUser.Roles.forEach(({ name, role }, index) => {
+            const organisationTDG = OrganisationFactory(name)
+            const roleTDG = this.createRole(role)
+
+            orgArray.push(this.createOrganisation(organisationTDG));
+
+            roleTDG.data.users = [userTDG.label]          
+            roleArray.push(roleTDG)
+
             organisation.MarketingAuthorisations.forEach(ma => {
                 maArray.push(this.createMa(ma))
             })
@@ -78,94 +82,6 @@ class Transformer {
 
         return [testUser, ...orgArray, ...roleArray, ...maArray]
 
-    }
-
-    /**
-     * Transform the data from a TAG asset to a TDG asset.
-     * Examples of these can be found in the transformers folder;
-     *
-     * tag-asset.example.json
-     * tdg-asset.example-1.json
-     * tdg-asset.example-2.json
-     */
-    transform() {
-        if (!this.assets.length) {
-            console.info('No assets have been provided');
-            return;
-        }
-
-        let transformedTDGAssets = []
-        let roleTDGAssets = []
-
-        this.assets.forEach((asset, index) => {
-            if (!asset['@type']) {
-                console.info(`Asset type is not set or asset has no data`);
-                return;
-            }
-
-            let transformedAsset = null;
-
-            switch (asset['@type']) {
-                case ASSET_TYPES.PERSONA:
-                    const personaTransformer = new PersonaTransformer(asset, this.namespace);
-                    transformedAsset = personaTransformer.transform();
-                    break;
-                case ASSET_TYPES.ORGANISATION:
-                    const organisationTransformer = new OrganisationTransformer(asset, this.namespace);
-                    transformedAsset = organisationTransformer.transform();
-                    break;
-                case ASSET_TYPES.MARKETING_AUTHORISATION:
-                    const marketingAuthorisationTransformer = new MarketingAuthorisationTransformer(asset, this.namespace);
-                    transformedAsset = marketingAuthorisationTransformer.transform();
-                    break;
-                default:
-                    console.info(`Asset not found of type ${asset['@type']}`);
-            }
-
-            if (!transformedAsset) {
-                return []
-            }
-            
-            const transformedTDGAsset = this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_CREATE, transformedAsset, index)
-            transformedTDGAssets.push(transformedTDGAsset);
-
-            // Add roles.
-            if(asset['@type'] == ASSET_TYPES.PERSONA){
-                if(asset.worksFor){
-                    asset.worksFor.forEach((role, index) => {
-                        const roleTransformer = new RoleTransformer(role, this.namespace)
-                        const transformedAsset2 = roleTransformer.transform()
-                        const transformedTDGAsset2 = this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_ASSIGN_ROLE, transformedAsset2, index)
-                        transformedTDGAsset2.data.users = [transformedAsset.label]
-                        roleTDGAssets.push(transformedTDGAsset2);
-                    })
-                }
-            }
-        });
-
-        ////////////////////
-
-        roleTDGAssets.forEach(role => {
-            const organisationName = role.originalData.name
-
-            transformedTDGAssets.forEach(asset => {
-                if(
-                    asset.type == TDG_CONSTANTS.TYPE_ORGANISATION &&
-                    asset.originalData.name === organisationName
-                ){
-                    role.data.orgId = asset.label
-                    transformedTDGAssets.push(role)
-                }
-            })
-        })
-
-        transformedTDGAssets.forEach(asset => {
-            delete asset.originalData
-        })
-
-        // transformedTDGAssets = this.linkData(transformedTDGAssets)
-
-        return transformedTDGAssets;
     }
 
     /**
@@ -180,14 +96,6 @@ class Transformer {
         asset.label = `${asset.type}${index}`;
 
         return asset;
-    }
-
-    linkData (data) {
-        data.forEach((asset) => {
-            if(asset.type == TDG_CONSTANTS.PERSONA){
-
-            }
-        })
     }
 }
 
