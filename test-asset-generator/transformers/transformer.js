@@ -9,6 +9,7 @@ const TDG_CONSTANTS = require('data-generator/common/constants')
 class Transformer {
     constructor(personaName, namespace) {
         this.persona = PersonaFactory(personaName);
+        console.log(this.persona)
         this.namespace = namespace;
     }
     
@@ -56,12 +57,16 @@ class Transformer {
 
     transform() {
         // this.catchEmptyError(this.persona)
-        const userTDG = this.createTestUser().originalData
+        const userTDG = this.createTestUser(this.persona)
         const orgArray = []
         const roleArray = []
         const maArray = []
 
-        testUser.Roles.forEach(({ name, role }, index) => {
+        if (!this.persona) {
+            return []
+        }
+
+        this.persona.Roles.forEach(({ name, role }, index) => {
             const organisationTDG = this.createOrganisation(name)
             const roleTDG = this.createRole(role, index)
 
