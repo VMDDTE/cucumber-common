@@ -26,9 +26,8 @@ class Transformer {
         }
     }
 
-    createOrganisation(orgName, index) {
+    createOrganisation(organisation, index) {
         try {
-            const organisation = OrganisationFactory(orgName)
             const transformedOrganisation = (new OrganisationTransformer(organisation, this.namespace)).transform();
             return this.addMetaDataToAsset(TDG_CONSTANTS.ACTION_CREATE, transformedOrganisation, index)
             
@@ -67,10 +66,11 @@ class Transformer {
         }
 
         this.persona.Roles.forEach(({ name, role }, index) => {
-            const organisationTDG = this.createOrganisation(name)
+            const organisation = OrganisationFactory(name)
+            const organisationTDG = this.createOrganisation(organisation, index)
             const roleTDG = this.createRole(role, index)
 
-            orgArray.push(this.createOrganisation(organisationTDG, index));
+            orgArray.push(organisationTDG);
 
             roleTDG.data.users = [userTDG.label]          
             roleArray.push(roleTDG)
@@ -80,7 +80,7 @@ class Transformer {
             })
         })
 
-        return [testUser, ...orgArray, ...roleArray, ...maArray]
+        return [userTDG, ...orgArray, ...roleArray, ...maArray]
 
     }
 

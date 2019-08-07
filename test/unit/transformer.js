@@ -3,9 +3,12 @@ const tap = require('tap')
 const transformer = require('../../test-asset-generator/transformers/transformer')
 
 tap.test('Check the persona is being returned', t => {
-  const testData = transformer('Test User', 'namespace').persona
-  t.equal(testData.FirstName, 'Test')
-  t.equal(testData.LastName, 'User')
+  const testData = transformer('Robert Price', 'namespace')
+  console.dir(testData)
+  t.equal(testData[0].data.name, 'Robert Price')
+  t.equal(testData[0].data.email, '{usergen}')
+  t.equal(testData[0].action, 'create')
+  t.equal(testData[0].label, 'ExternalUserRecord0')
   t.end()
 })
 
@@ -14,5 +17,3 @@ tap.test('Check that an error is thrown if no persona', t => {
   t.equal(testData.message, `'No User' doesn't exist`)
   t.end()
 })
-
-
