@@ -12,13 +12,12 @@ class MarketingAuthorisation {
         const data = {
             type: 'MarketingAuthorisation',
             data: {
-                MarketingAuthorisationNumber: `${this.data.MarketingAuthorisationNumber}-${this.namespace}`,
+                MarketingAuthorisationNumber: `${this.data.MarketingAuthorisationNumber}-${'${' + this.namespace + '}'}`,
                 OrganisationReference: this.data.CompanyNumber,
                 ProductName: this.data.ProductName,
                 ProductNo: this.data.ProductNo,
                 RenewalDate: convertedRenewalDate.toISOString()
-            },
-            originalData: this.data
+            }
         };
 
         return data;

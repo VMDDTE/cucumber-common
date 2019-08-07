@@ -2,6 +2,7 @@
     "@context": "http://schema.org/",
     "@type": "Organization",
     "name": "Raptors and Reptiles",
+    "organisationType": "Marketing Authorisation Holder",
     "address" : {
         "@type": "PostalAddress",
         "streetAddress": "4 Crocodile Street",

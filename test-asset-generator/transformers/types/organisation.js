@@ -10,7 +10,7 @@ class Organisation {
         const data = {
             type: this.mapOrganisationTypeToTDGFormat(this.data.OrganisationType),
             data: {
-                Name: `${this.data.Name}-${this.namespace}`,
+                Name: `${this.data.Name}-${'${' + this.namespace + '}'}`,
                 Address: {
                     Address: '',
                     Address1: '',
@@ -19,8 +19,7 @@ class Organisation {
                     Country: ''
                 },
                 OrganisationReference: this.data.OrganisationReference
-            },
-            originalData: this.data
+            }
         };
 
         return data;

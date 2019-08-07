@@ -1,16 +1,15 @@
 const TDG_CONSTANTS = require('data-generator/common/constants')
 
 class Role {
-    constructor(data, namespace) {
-        this.data = data;
+    constructor(roleName, namespace) {
+        this.role = roleName;
         this.namespace = namespace;
     }
 
     transform() {
         this.data = {
-            type: this.mapRoleTypeToTDGFormat(this.data.role),
-            data: {},
-            originalData: this.data
+            type: this.mapRoleTypeToTDGFormat(this.role),
+            data: {}
         };
 
         return this.data;

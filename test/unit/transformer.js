@@ -5,10 +5,10 @@ const transformer = require('../../test-asset-generator/transformers/transformer
 tap.test('Check the persona is being returned', t => {
   const testData = transformer('Robert Price', 'namespace')
   console.dir(testData)
-  t.equal(testData[0].data.name, 'Robert Price')
-  t.equal(testData[0].data.email, '{usergen}')
-  t.equal(testData[0].action, 'create')
-  t.equal(testData[0].label, 'ExternalUserRecord0')
+  t.equal(testData[2].data.name, 'Robert Price')
+  t.equal(testData[2].data.email, '{usergen}')
+  t.equal(testData[2].action, 'create')
+  t.equal(testData[2].label, 'ExternalUserRecord0')
   t.end()
 })
 

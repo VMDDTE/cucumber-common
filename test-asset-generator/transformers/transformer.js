@@ -65,22 +65,25 @@ class Transformer {
             return []
         }
 
-        this.persona.Roles.forEach(({ name, role }, index) => {
+        this.persona.Roles.forEach(({ name, role }, roleIndex) => {
+            console.log('creating org', name)
             const organisation = OrganisationFactory(name)
-            const organisationTDG = this.createOrganisation(organisation, index)
-            const roleTDG = this.createRole(role, index)
+            const organisationTDG = this.createOrganisation(organisation, roleIndex)
+            const roleTDG = this.createRole(role, roleIndex)
+
+            roleTDG.data.orgId = organisationTDG.label
 
             orgArray.push(organisationTDG);
 
             roleTDG.data.users = [userTDG.label]          
             roleArray.push(roleTDG)
 
-            organisation.MarketingAuthorisations.forEach(ma => {
-                maArray.push(this.createMa(ma, index))
+            organisation.MarketingAuthorisations.forEach((ma, maIndex) => {
+                maArray.push(this.createMa(ma, maIndex))
             })
         })
 
-        return [userTDG, ...orgArray, ...roleArray, ...maArray]
+        return [...orgArray, userTDG, ...roleArray, ...maArray]
 
     }
 

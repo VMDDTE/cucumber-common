@@ -10,8 +10,7 @@ class Persona {
             data: {
                 name : this.data.Name,
                 email: '{usergen}'
-            },
-            originalData: this.data
+            }
         }
         return data;
     }
