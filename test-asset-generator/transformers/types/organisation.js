@@ -1,6 +1,6 @@
-import TDG_CONSTANTS from 'data-generator/common/constants';
+const TDG_CONSTANTS = require('data-generator/common/constants')
 
-export default class Organisation {
+class Organisation {
     constructor(data, namespace) {
         this.data = data;
         this.namespace = namespace;
@@ -35,3 +35,5 @@ export default class Organisation {
         }
     }
 }
+
+module.exports = Organisation

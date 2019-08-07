@@ -1,6 +1,6 @@
-import TDG_CONSTANTS from 'data-generator/common/constants';
+const TDG_CONSTANTS = require('data-generator/common/constants')
 
-export default class Role {
+class Role {
     constructor(data, namespace) {
         this.data = data;
         this.namespace = namespace;
@@ -34,3 +34,5 @@ export default class Role {
         }
     }
 }
+
+module.exports = Role

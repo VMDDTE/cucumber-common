@@ -1,4 +1,4 @@
-export default class Persona {
+class Persona {
     constructor(data, namespace) {
         this.data = data;
         this.namespace = namespace;
@@ -16,3 +16,5 @@ export default class Persona {
         return data;
     }
 }
+
+module.exports = Persona

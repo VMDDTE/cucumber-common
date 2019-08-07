@@ -1,10 +1,9 @@
-import PersonaTransformer from './types/persona';
-import PersonaFactory from '../engines/persona-engine'
-import OrganisationFactory from '../engines/organisation-engine'
-import OrganisationTransformer from './types/organisation';
-import RoleTransformer from './types/role';
-import MarketingAuthorisationTransformer from './types/marketing-authorisation';
-import TDG_CONSTANTS from 'data-generator/common/constants';
+const PersonaTransformer = require('./types/persona')
+const PersonaFactory = require('../engines/persona-engine')
+const OrganisationTransformer = require('./types/organisation')
+const RoleTransformer = require('./types/role')
+const MarketingAuthorisationTransformer = require('./types/marketing-authorisation')
+const TDG_CONSTANTS = require('data-generator/common/constants')
 
 const ASSET_TYPES = {
     PERSONA: 'Person',
@@ -108,6 +107,6 @@ class Transformer {
  * @param {String} personaName: The name of the persona to load
  * @param {String} namespace: The namespace the transformer will run in
  */
-const transformer = (personaName, namespace) => new Transformer(assets, namespace)
+const transformer = (personaName, namespace) => new Transformer(personaName, namespace)
 
  module.exports = transformer

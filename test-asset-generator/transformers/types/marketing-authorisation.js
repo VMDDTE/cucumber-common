@@ -1,6 +1,6 @@
-import moment from 'moment';
+const moment = require('moment')
 
-export default class MarketingAuthorisation {
+class MarketingAuthorisation {
     constructor(data, namespace) {
         this.data = data;
         this.namespace = namespace;
@@ -24,3 +24,5 @@ export default class MarketingAuthorisation {
         return data;
     }
 }
+
+module.exports = MarketingAuthorisation
