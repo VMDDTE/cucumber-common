@@ -9,12 +9,11 @@ const TDG_CONSTANTS = require('data-generator/common/constants')
 class Transformer {
     constructor(personaName, namespace) {
         this.persona = PersonaFactory(personaName);
-        console.log(this.persona)
         this.namespace = namespace;
     }
     
-    catchEmptyError (val) {
-        throw !val.length ? new Error('No assets have been provided') : false;
+    catchEmptyError () {
+        throw new Error('No assets have been provided')
     }
 
     createTestUser() {
@@ -55,18 +54,20 @@ class Transformer {
     }
 
     transform() {
-        // this.catchEmptyError(this.persona)
+        console.log('ppp', typeof this.persona)
+        if (this.persona instanceof Error) {
+            this.catchEmptyError()
+        }
         const userTDG = this.createTestUser(this.persona)
         const orgArray = []
         const roleArray = []
         const maArray = []
 
-        if (!this.persona) {
+        if (!userTDG ) {
             return []
         }
 
         this.persona.Roles.forEach(({ name, role }, roleIndex) => {
-            console.log('creating org', name)
             const organisation = OrganisationFactory(name)
             const organisationTDG = this.createOrganisation(organisation, roleIndex)
             const roleTDG = this.createRole(role, roleIndex)

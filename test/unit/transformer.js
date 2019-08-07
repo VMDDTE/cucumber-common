@@ -4,7 +4,6 @@ const transformer = require('../../test-asset-generator/transformers/transformer
 
 tap.test('Check the persona is being returned', t => {
   const testData = transformer('Robert Price', 'namespace')
-  console.dir(testData)
   t.equal(testData[2].data.name, 'Robert Price')
   t.equal(testData[2].data.email, '{usergen}')
   t.equal(testData[2].action, 'create')
@@ -13,7 +12,6 @@ tap.test('Check the persona is being returned', t => {
 })
 
 tap.test('Check that an error is thrown if no persona', t => {
-  const testData = transformer('No User', 'namespace').persona
-  t.equal(testData.message, `'No User' doesn't exist`)
+  t.throws(transformer('No User', 'namespace'), new Error('No assets have been provided'), 'Should throw error')
   t.end()
 })
