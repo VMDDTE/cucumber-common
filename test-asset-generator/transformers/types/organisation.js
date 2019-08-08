@@ -27,6 +27,8 @@ class Organisation {
 
     mapOrganisationTypeToTDGFormat(organisationType) {
         switch (organisationType) {
+            case 'Manufacturer':
+                return TDG_CONSTANTS.TYPE_MANUFACTURER;
             case 'Marketing Authorisation Holder':
                 return TDG_CONSTANTS.TYPE_ORGANISATION;
             default:

@@ -54,7 +54,6 @@ class Transformer {
     }
 
     transform() {
-        console.log('ppp', typeof this.persona)
         if (this.persona instanceof Error) {
             this.catchEmptyError()
         }
