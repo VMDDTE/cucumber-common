@@ -1,18 +1,18 @@
 {
     "@context": "http://schema.org/",
     "@type": "Person",
-    "givenName" : "Mary",
-    "familyName" : "Contrary",
+    "givenName" : "Test",
+    "familyName" : "User",
     "additionalName" : "",
-    "gender" : "female",
-    "email" : "fem@il.me",
-    "birthDate" : "18/01/1982",
-    "jobTitle": "Regulatory Affairs Director",
+    "gender" : "male",
+    "email" : "em@il.me",
+    "birthDate" : "18/01/1986",
+    "jobTitle": "Regulatory Affairs Manager",
     "RCVSNo": "0000000",
     "worksFor" : [
         {
             "@type": "Organization",
-            "name" : "Pterodactyl Laboratories",
+            "name" : "Test Organisation",
             "role": "Primary Admin"
         }
     ],
