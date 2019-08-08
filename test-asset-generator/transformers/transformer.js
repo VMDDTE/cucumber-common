@@ -66,6 +66,8 @@ class Transformer {
             return []
         }
 
+        userTDG.testUser = 'true'
+
         this.persona.Roles.forEach(({ name, role }, roleIndex) => {
             const organisation = OrganisationFactory(name)
             const organisationTDG = this.createOrganisation(organisation, roleIndex)
@@ -73,9 +75,9 @@ class Transformer {
 
             roleTDG.data.orgId = organisationTDG.label
 
-            orgArray.push(organisationTDG);
+            orgArray.push(organisationTDG)
 
-            roleTDG.data.users = [userTDG.label]          
+            roleTDG.data.users = [userTDG.label]
             roleArray.push(roleTDG)
 
             organisation.MarketingAuthorisations.forEach((ma, maIndex) => {
