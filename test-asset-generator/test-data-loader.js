@@ -1,19 +1,18 @@
 import * as fs from 'fs-extra';
-import Transformer from './transformers/transformer';
+import transformer from './transformers/transformer';
 import * as DataGenerator from 'data-generator';
 
-export default class Runner {
-    constructor(assets, featureName, namespace) {
+export default class TestDataLoader {
+    constructor(persona, featureName, namespace) {
         this.tmpPath = 'test-asset-generator/tmp';
         this.namespace = namespace;
         this.featureName = featureName;
-        this.transformer = new Transformer(assets, namespace);
+        this.tdgAssets = transformer(persona, namespace);
     }
 
     start() {
-        const tdgAssets = this.transformer.transform()
-        this.persistDataToStorage(tdgAssets);
-        this.sendToDataGenerator(tdgAssets);
+        this.persistDataToStorage(this.tdgAssets);
+        this.sendToDataGenerator(this.tdgAssets);
     }
 
     /**
