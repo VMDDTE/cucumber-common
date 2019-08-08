@@ -1,2 +1,4 @@
 node_modules/
 test-asset-generator/tmp/
+local-storage/
+logs/
