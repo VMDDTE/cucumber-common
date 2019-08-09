@@ -1,13 +1,12 @@
 import * as fs from 'fs-extra';
 import transformer from './transformers/transformer';
 import * as DataGenerator from 'data-generator';
+import short from 'short-uuid'
 
 export default class TestDataLoader {
-    constructor(persona, featureName, namespace) {
+    constructor(persona) {
         this.tmpPath = 'test-asset-generator/tmp';
-        this.namespace = namespace;
-        this.featureName = featureName;
-        this.tdgAssets = transformer(persona, namespace);
+        this.tdgAssets = transformer(persona, short.generate());
     }
 
     start() {
@@ -42,7 +41,11 @@ export default class TestDataLoader {
                 return;
             }
 
-            await DataGenerator.generateFromAbsPath(`${this.tmpPath}/${asset.label}.json`, this.featureName, this.namespace)
+            await DataGenerator.generateFromAbsPath(`${this.tmpPath}/${asset.label}.json`, '', short.generate())
         }
     }
 }
+
+const testDataLoader = (name) => new TestDataLoader(name).start()
+
+module.exports = testDataLoader
