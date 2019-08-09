@@ -1,5 +1,5 @@
 const personae = require('../../assets/personae')
-const timestamp = Math.floor(Date.now() / 1000)
+const short = require('short-uuid')
 
 class Actor {
   constructor (name) {
@@ -27,7 +27,7 @@ class Actor {
       JobTitle: thePersona.jobTitle,
       RcvsNo: thePersona.RCVSNo,
       Roles: thePersona.worksFor,
-      Email: `${timestamp}-${thePersona.email}`
+      Email: `${short.generate()}-${thePersona.email}`
     }
     : new Error(`'${name}' doesn\'t exist`)
   }
