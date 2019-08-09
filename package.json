@@ -10,7 +10,7 @@
     "test:start-server": "http-server -p 8080 ./lib/fixtures",
     "test:non-browser": "tap --esm --no-cov test/unit/**/*.js",
     "test:wdio": "wdio --spec test/wdio/*.js test/mocha.wdio.conf.js",
-    "test:e2e": "wdio test/wdio.conf.js"
+    "test:e2e": "export NODE_ENV=local; export B2C_USERNAME=vmd.vet.test@gmail.com; export B2C_PASSWORD=Pw4supp0rt; wdio test/wdio.conf.js"
   },
   "repository": {
     "type": "git",
@@ -24,11 +24,12 @@
   "homepage": "https://github.com/VMDDTE/applications#readme",
   "dependencies": {
     "cucumber-boilerplate": "git+https://github.com/webdriverio/cucumber-boilerplate.git#84c004296864c9878153b969d2e258c336bb3066",
-    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/new_tdg_changes",
+    "data-generator": "git+https://github.com/VMDDTE/test-data-generator.git#feature/SIS-3720-update_tdg_with_new_code_for_new_tag_system",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "fs-extra": "^8.1.0",
     "moment": "^2.24.0",
+    "short-uuid": "^3.1.1",
     "tap": "^14.4.2",
     "wdio-cucumber-framework": "^2.2.8",
     "wdio-selenium-standalone-service": "0.0.9",
