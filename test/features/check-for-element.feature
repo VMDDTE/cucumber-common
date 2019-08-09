@@ -14,7 +14,7 @@ Feature: Check for element
     
   Scenario Outline: Check element is visible
     Given I am on the Kitchen Sink page
-    Then I see the Go Somewhere <element>
+    Then I see the Go Somewhere <element> on the page
 
   Examples:
     | element |
